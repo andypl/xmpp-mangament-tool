@@ -1,11 +1,15 @@
 package pl.info.czerniak.model;
 
-import java.util.List;
+import javax.xml.bind.annotation.XmlType;
 import java.util.Objects;
 
+@XmlType(propOrder = {"name", "jid"})
 public class Contact {
     private String name;
     private String jid;
+
+    public Contact() {
+    }
 
     public Contact(String name, String jid) {
         this.name = name;

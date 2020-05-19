@@ -1,13 +1,24 @@
 package pl.info.czerniak.model;
 
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlTransient;
 import java.util.*;
 
+@XmlRootElement(name = "Contacts")
 public class ContactList {
+    @XmlElement(name = "Account")
     private String accountJID;
+    @XmlElement(name = "Contact")
     private Set<Contact> contacts;
+    @XmlElement(name = "Group")
     private List<ContactGroup> contactGroups;
+    @XmlElement(name = "Bookmark URLs")
     private Set<BookmarkURL> bookmarkURLS;
+    @XmlElement(name = "Bookmark Conferences")
     private Set<BookmarkConference> bookmarkConferences;
+
+    public ContactList(){}
 
     public ContactList(String accountJID) {
         this.accountJID = accountJID;
@@ -17,6 +28,7 @@ public class ContactList {
         this.bookmarkConferences = new HashSet<>();
     }
 
+    @XmlTransient
     public String getAccountJID() {
         return accountJID;
     }
@@ -79,6 +91,10 @@ public class ContactList {
 
     public int getContactCount(){
         return this.contacts.size();
+    }
+
+    public int getGroupCount(){
+        return this.contactGroups.size();
     }
 
     public Contact getContactByJID(String jid){

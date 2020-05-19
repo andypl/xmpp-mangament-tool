@@ -1,9 +1,13 @@
 package pl.info.czerniak.model;
 
+import javax.xml.bind.annotation.XmlAttribute;
+import javax.xml.bind.annotation.XmlElement;
 import java.util.*;
 
 public class ContactGroup {
+    @XmlAttribute(name = "Name")
     private String name;
+    @XmlElement(name = "Contact")
     private List<Contact> contacts;
 
     public ContactGroup(String name) {
